@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head >
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Care Center</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+        }
+
+        .dropdown {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .dropdown select {
+            flex: 1;
+            margin-right: 10px;
+        }
+
+        .remove-dropdown {
+            margin-left: 10px;
+        }
+
+        .result-container {
+            text-align: center;
+            margin: auto;
+        }
+
+        .title {
+            text-align: center;
+            margin-left: 7%;
+        }
+
+        .logo {
+            margin: auto;
+            width: 3%;
+            height: 3%;
+        }
+
+        .myimg {
+            width: 50px;
+            height: 50px;
+            border: 2px solid black;
+            border-radius: 25px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body style="background-color: #cfcfcf;">
+    <!-- Navbar -->
+    <nav>
+        <div class="container-fluid">
+            <!-- Logo at the top-left corner -->
+            <div class="logo">
+                <img class="myimg"
+                    src="https://static.vecteezy.com/system/resources/previews/017/177/954/original/round-medical-cross-symbol-on-transparent-background-free-png.png"
+                    alt="" style="object-fit:fill;width:300%;height:300%;" />
+            </div>
+        </div>
+    </nav>
+    <!-- main form of page -->
+    <h1 class="title">Health Care Center</h1>
+    <div class="container my-4 mt-4" style="background: rgb(59, 58, 58); color: white; border-radius: 10%; padding: 5%;">
+        <form action="/predict" method="post">
+            <div class="form-group" id="symptomsContainer">
+                <label for="symptoms">Select Symptoms:</label>
+                <div id="dropdowns">
+                    <div class="dropdown">
+                        <select class="form-control" name="symptoms[]">
+                            <option value="itching">Itching</option>
+                            <option value="skin_rash">Skin rash</option>
+                            <option value="continuous_sneezing">Continuous sneezing</option>
+                            <option value="shivering">Shivering</option>
+                            <option value="stomach_pain">Stomach pain</option>
+                            <option value="acidity">Acidity</option>
+                            <option value="vomiting">Vomiting</option>
+                            <option value="indigestion">Indigestion</option>
+                            <option value="muscle_wasting">Muscle wasting</option>
+                            <option value="patches_in_throat">Patches in throat</option>
+                            <option value="fatigue">Fatigue</option>
+                            <option value="weight_loss">Weight loss</option>
+                            <option value="sunken_eyes">Sunken eyes</option>
+                            <option value="cough">Cough</option>
+                            <option value="headache">Headache</option>
+                            <option value="chest_pain">Chest pain</option>
+                            <option value="back_pain">Back pain</option>
+                            <option value="weakness_in_limbs">Weakness in limbs</option>
+                            <option value="chills">Chills</option>
+                            <option value="joint_pain">Joint pain</option>
+                            <option value="yellowish_skin">Yellowish skin</option>
+                            <option value="constipation">Constipation</option>
+                            <option value="pain_during_bowel_movements">Pain during bowel movements</option>
+                            <option value="breathlessness">Breathlessness</option>
+                            <option value="cramps">Cramps</option>
+                            <option value="weight_gain">Weight gain</option>
+                            <option value="mood_swings">Mood swings</option>
+                            <option value="neck_pain">Neck pain</option>
+                            <option value="muscle_weakness">Muscle weakness</option>
+                            <option value="stiff_neck">Stiff neck</option>
+                            <option value="pus_filled_pimples">Pus-filled pimples</option>
+                            <option value="burning_micturition">Burning micturition</option>
+                            <option value="bladder_discomfort">Bladder discomfort</option>
+                            <option value="high_fever">High fever</option>
+                            <option value="nodal_skin_eruptions">Nodal skin eruptions</option>
+                            <option value="ulcers_on_tongue">Ulcers on tongue</option>
+                            <option value="loss_of_appetite">Loss of appetite</option>
+                            <option value="restlessness">Restlessness</option>
+                            <option value="dehydration">Dehydration</option>
+                            <option value="dizziness">Dizziness</option>
+                            <option value="weakness_of_one_body_side">Weakness of one body side</option>
+                            <option value="lethargy">Lethargy</option>
+                            <option value="nausea">Nausea</option>
+                            <option value="abdominal_pain">Abdominal pain</option>
+                            <option value="pain_in_anal_region">Pain in anal region</option>
+                            <option value="sweating">Sweating</option>
+                            <option value="cold_hands_and_feets">Cold hands and feet</option>
+                            <option value="anxiety">Anxiety</option>
+                            <option value="knee_pain">Knee pain</option>
+                            <option value="swelling_joints">Swelling joints</option>
+                            <option value="blackheads">Blackheads</option>
+                            <option value="foul_smell_of urine">Foul smell of urine</option>
+                            <option value="skin_peeling">Skin peeling</option>
+                            <option value="blister">Blister</option>
+                            <option value="dischromic _patches">Dischromic patches</option>
+                            <option value="watering_from_eyes">Watering from eyes</option>
+                            <option value="blurred_and_distorted_vision">Blurred and distorted vision</option>
+                            <option value="loss_of_balance">Loss of balance</option>
+                            <option value="dark_urine">Dark urine</option>
+                            <option value="swelling_of_stomach">Swelling of stomach</option>
+                            <option value="diarrhoea">Diarrhoea</option>
+                            <option value="bloody_stool">Bloody stool</option>
+                            <option value="irritation_in_anus">Irritation in anus</option>
+                            <option value="obesity">Obesity</option>
+                            <option value="spinning_movements">Spinning movements</option>
+                            <option value="continuous_feel_of_urine">Continuous feel of urine</option>
+                            <option value="silver_like_dusting">Silver like dusting</option>
+                            <option value="red_sore_around_nose">Red sore around nose</option>
+                            <option value="spotting_ urination">Spotting urination</option>
+                            <option value="passage_of_gases">Passage of gases</option>
+                            <option value="family_history">Family history</option>
+                            <option value="irregular_sugar_level">Irregular sugar level</option>
+                            <option value="excessive_hunger">Excessive hunger</option>
+                            <option value="yellowing_of_eyes">Yellowing of eyes</option>
+                            <option value="distention_of_abdomen">Distention of abdomen</option>
+                            <option value="irregular_sugar_level">Irregular sugar level</option>
+                            <option value="yellowing_of_eyes">Yellowing of eyes</option>
+                            <option value="swollen_legs">Swollen legs</option>
+                            <option value="painful_walking">Painful walking</option>
+                            <option value="small_dents_in_nails">Small dents in nails</option>
+                            <option value="yellow_crust_ooze">Yellow crust ooze</option>
+                        </select>
+                        <button type="button" class="btn btn-danger btn-sm remove-dropdown">X</button>
+                    </div>
+                </div>
+                <button type="button" id="addDropdown" class="btn btn-secondary mt-2">+ Add another</button>
+            </div>
+            <button type="submit" class="btn btn-danger btn-lg mt-2"
+                style="width: 40%; margin-top: 25px; margin-left: 30%; font-size: 150%;">Predict</button>
+        </form>
+    </div>
+    {% if predicted_disease %}
+    <div class="result-container">
+        <button class="toggle-button" onclick="openModal('diseaseModal')">Disease</button>
+        <button class="toggle-button" onclick="openModal('descriptionModal')">Description</button>
+        <button class="toggle-button" onclick="openModal('precautionModal')">Precaution</button>
+        <button class="toggle-button" onclick="openModal('medicationsModal')">Medications</button>
+        <button class="toggle-button" onclick="openModal('workoutsModal')">Workouts</button>
+        <button class="toggle-button" onclick="openModal('dietsModal')">Diets</button>
+    </div>
+    {% endif %}
+    <!-- Disease Modal -->
+    <div class="modal" id="diseaseModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Predicted Disease</h2>
+                <span class="close" onclick="closeModal('diseaseModal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p>{{ predicted_disease }}</p>
+            </div>
+        </div>
+    </div>
+    <!-- Description Modal -->
+    <div class="modal" id="descriptionModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Description</h2>
+                <span class="close" onclick="closeModal('descriptionModal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p>{{ dis_des }}</p>
+            </div>
+        </div>
+    </div>
+    <!-- Precaution Modal -->
+    <div class="modal" id="precautionModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Precaution</h2>
+                <span class="close" onclick="closeModal('precautionModal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <ul>
+                    {% for i in my_precautions %}
+                    <li>{{ i }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Medications Modal -->
+    <div class="modal" id="medicationsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Medications</h2>
+                <span class="close" onclick="closeModal('medicationsModal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <ul>
+                    {% for i in medications %}
+                    {% set i_list = i.replace('[', '').replace(']', '').split(', ') %}
+                    {% for a in i_list %}
+                    <li>{{ a.replace("'","") }}</li>
+                    {% endfor %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Workouts Modal -->
+    <div class="modal" id="workoutsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Workouts</h2>
+                <span class="close" onclick="closeModal('workoutsModal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <ul>
+                    {% for i in workout %}
+                    <li>{{ i }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Diets Modal -->
+    <div class="modal" id="dietsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Diets</h2>
+                <span class="close" onclick="closeModal('dietsModal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <ul>
+                    {% for i in my_diet %}
+                    {% set i_list = i.replace('[', '').replace(']', '').split(', ') %}
+                    {% for a in i_list %}
+                    <li>{{ a.replace("'","") }}</li>
+                    {% endfor %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        function openModal(modalId) {
+            var modal = document.getElementById(modalId);
+            modal.style.display = "block";
+        }
+        function closeModal(modalId) {
+            var modal = document.getElementById(modalId);
+            modal.style.display = "none";
+        }
+        window.onclick = function (event) {
+            if (event.target.className === "modal") {
+                event.target.style.display = "none";
+            }
+        }
+        document.getElementById("addDropdown").addEventListener("click", function () {
+            var dropdownContainer = document.getElementById("dropdowns");
+            var newDropdown = document.createElement("div");
+            newDropdown.className = "dropdown";
+            var selectDropdown = document.createElement("select");
+            selectDropdown.className = "form-control";
+            selectDropdown.name = "symptoms[]";
+            var options = [
+                "Itching",
+                "Skin rash",
+                "Continuous sneezing",
+                "Shivering",
+                "Stomach pain",
+                "Acidity",
+                "Vomiting",
+                "Indigestion",
+                "Muscle wasting",
+                "Patches in throat",
+                "Fatigue",
+                "Weight loss",
+                "Sunken eyes",
+                "Cough",
+                "Headache",
+                "Chest pain",
+                "Back pain",
+                "Weakness in limbs",
+                "Chills",
+                "Joint pain",
+                "Yellowish skin",
+                "Constipation",
+                "Pain during bowel movements",
+                "Breathlessness",
+                "Cramps",
+                "Weight gain",
+                "Mood swings",
+                "Neck pain",
+                "Muscle weakness",
+                "Stiff neck",
+                "Pus-filled pimples",
+                "Burning micturition",
+                "Bladder discomfort",
+                "High fever",
+                "Nodal skin eruptions",
+                "Ulcers on tongue",
+                "Loss of appetite",
+                "Restlessness",
+                "Dehydration",
+                "Dizziness",
+                "Weakness of one body side",
+                "Lethargy",
+                "Nausea",
+                "Abdominal pain",
+                "Pain in anal region",
+                "Sweating",
+                "Cold hands and feet",
+                "Anxiety",
+                "Knee pain",
+                "Swelling joints",
+                "Blackheads",
+                "Foul smell of urine",
+                "Skin peeling",
+                "Blister",
+                "Dischromic patches",
+                "Watering from eyes",
+                "Blurred and distorted vision",
+                "Loss of balance",
+                "Dark urine",
+                "Swelling of stomach",
+                "Diarrhoea",
+                "Bloody stool",
+                "Irritation in anus",
+                "Obesity",
+                "Spinning movements",
+                "Continuous feel of urine",
+                "Silver like dusting",
+                "Red sore around nose",
+                "Spotting urination",
+                "Passage of gases",
+                "Family history",
+                "Irregular sugar level",
+                "Excessive hunger",
+                "Yellowing of eyes",
+                "Distention of abdomen",
+                "Swollen legs",
+                "Painful walking",
+                "Small dents in nails",
+                "Yellow crust ooze"
+            ];
+
+            options.forEach(function (optionText) {
+                var option = document.createElement("option");
+                option.text = optionText;
+                option.value = optionText.toLowerCase();
+                selectDropdown.add(option);
+            });
+            var removeButton = document.createElement("button");
+            removeButton.className = "btn btn-danger btn-sm remove-dropdown";
+            removeButton.textContent = "X";
+            removeButton.addEventListener("click", function () {
+                newDropdown.remove();
+            });
+            newDropdown.appendChild(selectDropdown);
+            newDropdown.appendChild(removeButton);
+            dropdownContainer.appendChild(newDropdown);
+        });
+        document.addEventListener("click", function (event) {
+            if (event.target.classList.contains("remove-dropdown")) {
+                event.target.parentNode.remove();
+            }
+
+        });
+    </script>
+</body>
+
+</html>
